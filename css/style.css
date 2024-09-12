@@ -1,5 +1,9 @@
 body{
     background-color: #f9f7fe;
+    background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/143/071/original/pexels-thatguycraig000-1563356.jpg?1726116238);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 .container {
 background: #1c81b3;
@@ -7,7 +11,21 @@ margin: 60px auto;
 padding: 30px;
 max-width: 600px;
 box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px ;
-border-radius: 10px;
+border-radius: 20px;
+opacity: .90;
+}
+select {
+    display: block ;
+    width: 100%;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;   
+    background-color: #ffe4d8;
+}
+.option{
+    font-size: 22px;
+    text-align: center;      
 }
 h1{
     text-align: center;
@@ -22,14 +40,14 @@ h2{
 .city{
 display: flex;
 justify-content: space-between;
-border-bottom:#fefefe 1px solid ;
+border-bottom:#fefefe 1px groove;
 }
 .city:last-child{
     border:none;
 }
 .date {
-    opacity: .8;
-    color:rgb(243, 240, 237);
+    opacity: .9;
+    color:#ffe4d8;
     margin:10px;
 }
 .time {
@@ -41,21 +59,26 @@ padding-top: 20px;
     font-size: 18px;
     vertical-align: middle;
 }
-select {
-    display: block ;
-    width: 100%;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 18px;
-
-}
 footer{
-    border-top: 1px solid #f9f7fe;
-    padding: 20px 0 0 0;
+    border-top:dotted 3px #f9f7fe;
     text-align: center;
     font-size: 26px;
-    color: #1c81b3;
+    color:#ffe4d8; 
+    background-color: rgba(80, 232, 179, 0.207);
+    margin: 60px auto;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 20px;
+    opacity: .9;
+
 }
+a{
+color:#43c4ff;
+}
+a:hover {
+color: #fefefe;
+}
+
 .strong {
 font-weight: bold;
 }
