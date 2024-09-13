@@ -4,18 +4,18 @@ function updateTime() {
     let dublinElement = document.querySelector("#dublin");
     let dublinDateElement = dublinElement.querySelector(".date");
     let dublinTimeElement = dublinElement.querySelector(".time");
-    let dublinTime = moment().tz("Europe/dublin");
+    let dublinTime = moment().tz("Europe/Dublin"); // Fixed timezone casing
 
-    dublinDateElement.innerHTML = moment().format("MMMM Do, YYYY");
+    dublinDateElement.innerHTML = dublinTime.format("MMMM Do, YYYY"); // Use the city's timezone for date
     dublinTimeElement.innerHTML = dublinTime.format("h:mm:ss [<small>]A[</small>]");
 
     // Lisbon
     let lisbonElement = document.querySelector("#lisbon");
     let lisbonDateElement = lisbonElement.querySelector(".date");
     let lisbonTimeElement = lisbonElement.querySelector(".time");
-    let lisbonTime = moment().tz("Europe/lisbon");
+    let lisbonTime = moment().tz("Europe/Lisbon"); // Fixed timezone casing
 
-    lisbonDateElement.innerHTML = moment().format("MMMM Do, YYYY");
+    lisbonDateElement.innerHTML = lisbonTime.format("MMMM Do, YYYY"); // Use the city's timezone for date
     lisbonTimeElement.innerHTML = lisbonTime.format("h:mm:ss [<small>]A[</small>]");
 
     // Los Angeles
@@ -24,7 +24,7 @@ function updateTime() {
     let losAngelesTimeElement = losAngelesElement.querySelector(".time");
     let losAngelesTime = moment().tz("America/Los_Angeles");
 
-    losAngelesDateElement.innerHTML = moment().format("MMMM Do, YYYY");
+    losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM Do, YYYY"); // Use the city's timezone for date
     losAngelesTimeElement.innerHTML = losAngelesTime.format("h:mm:ss [<small>]A[</small>]");
 }
 
