@@ -1,11 +1,10 @@
-let updateCityInterval;
-
+let updatecityInterval;
 function updateTime() {
     // Dublin
     let dublinElement = document.querySelector("#dublin");
     let dublinDateElement = dublinElement.querySelector(".date");
     let dublinTimeElement = dublinElement.querySelector(".time");
-    let dublinTime = moment().tz("Europe/Dublin");
+    let dublinTime = moment().tz("Europe/dublin");
 
     dublinDateElement.innerHTML = moment().format("MMMM Do, YYYY");
     dublinTimeElement.innerHTML = dublinTime.format("h:mm:ss [<small>]A[</small>]");
@@ -14,7 +13,7 @@ function updateTime() {
     let lisbonElement = document.querySelector("#lisbon");
     let lisbonDateElement = lisbonElement.querySelector(".date");
     let lisbonTimeElement = lisbonElement.querySelector(".time");
-    let lisbonTime = moment().tz("Europe/Lisbon");
+    let lisbonTime = moment().tz("Europe/lisbon");
 
     lisbonDateElement.innerHTML = moment().format("MMMM Do, YYYY");
     lisbonTimeElement.innerHTML = lisbonTime.format("h:mm:ss [<small>]A[</small>]");
@@ -35,36 +34,63 @@ function updateCity(event) {
         cityTimeZone = moment.tz.guess();
     }
 
-    let cityName = cityTimeZone.split("/")[1].replace("_", " ");
+    let cityName = cityTimeZone.replace("_", " ").split("/")[1];
 
-    if (updateCityInterval) {
-        clearInterval(updateCityInterval);
+    if (updatecityInterval) {
+        clearInterval(updatecityInterval);
     }
 
     function updateSelectedCityTime() {
         let cityTime = moment().tz(cityTimeZone);
         let citiesElement = document.querySelector("#cities");
-
         citiesElement.innerHTML = `
-        <div class="city">
-            <div>
-                <h2>${cityName}</h2>
-                <div class="date">${cityTime.format("MMMM Do, YYYY")}</div>
+            <div class="city">
+                <div>
+                    <h2>${cityName}</h2>
+                    <div class="date">${cityTime.format("MMMM Do, YYYY")}</div>
+                </div>
+                <div class="time">${cityTime.format("h:mm:ss")}<small>${cityTime.format("A")}</small></div>
             </div>
-            <div class="time">${cityTime.format("h:mm:ss")}<small>${cityTime.format("A")}</small></div>
-        </div>
         `;
     }
 
     updateSelectedCityTime();
-    updateCityInterval = setInterval(updateSelectedCityTime, 1000);
+    updatecityInterval = setInterval(updateSelectedCityTime, 1000);
 
     let resetButton = document.getElementById("reset-button");
     resetButton.style.display = "block";
 }
 
 function resetList() {
-    window.location.href = "https://fluorite-world-clocks.netlify.app";
+    document.getElementById("reset-button").style.display = "none";
+    document.querySelector("#cities").innerHTML = `
+        <div class="city" id="dublin">
+            <div>
+                <h2>🇮🇪 Dublin</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="lisbon">
+            <div>
+                <h2>🇵🇹 Lisbon</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+        <div class="city" id="los-angeles">
+            <div>
+                <h2>🇺🇸 Los Angeles</h2>
+                <div class="date"></div>
+            </div>
+            <div class="time"></div>
+        </div>
+    `;
+    updateTime()
+    document.querySelector("#city").value = "";
+    if (updatecityInterval) {
+        clearInterval(updatecityInterval);
+    }
 }
 
 updateTime();
